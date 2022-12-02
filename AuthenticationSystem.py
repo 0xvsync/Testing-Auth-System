@@ -1,5 +1,5 @@
 import hashlib
-
+from Exceptions.handler import *
 
 """
     Create a Initiator, for the authentication.
@@ -34,15 +34,18 @@ class My_AuthenticationSystem:
          - Return dict containing a dict, value of the variable in dict being[str, str]
     """
     def hash (self) -> dict[dict[str, str], str]:
-        return {
-            "ARGS_" :
-                {
-                    "Username": self.username,
-                    "Password": self.password
-                },
-                "Username": hashlib.sha256(self.username.encode()).hexdigest(),
-                "Password" : hashlib.sha256(self.password.encode()).hexdigest()
-                }
+        try:
+            return {
+                "ARGS_" :
+                    {
+                        "Username": self.username,
+                        "Password": self.password
+                    },
+                    "Username": hashlib.sha256(self.username.encode()).hexdigest(),
+                    "Password" : hashlib.sha256(self.password.encode()).hexdigest()
+                    }
+        except:
+            raise CantHashError("Couldn't hash polluted credentials.")
 
     """
         Authenticate.
@@ -53,7 +56,7 @@ class My_AuthenticationSystem:
                 return True
             else:
                 pass
-        return False
+        raise InvalidCredentialsError("Authentication has not passed.")
 
 if __name__ == '__main__':
     """
@@ -61,6 +64,7 @@ if __name__ == '__main__':
     """
     user_input: str = input(":")
     password_input: str = input(":")
+
     constructor: My_AuthenticationSystem.D_TYPE = My_AuthenticationSystem(user_input, password_input)
     hash_constructor: My_AuthenticationSystem.D_TYPE = constructor.hash()
     authenticate: My_AuthenticationSystem.D_TYPE = constructor.AUTHENTICATE(hash_constructor)
