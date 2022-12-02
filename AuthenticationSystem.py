@@ -9,7 +9,7 @@ class My_AuthenticationSystem:
      My_AuthenticationSystem DATA TYPE.
     """
     D_TYPE: None = None
-"""
+    """
     - ARGUMENTS
      - username[str],
      - password[str]
@@ -17,7 +17,7 @@ class My_AuthenticationSystem:
     
     - DATABASE
      - Create a temporary database in a array[:list]
-"""
+    """
     def __init__ (self, username: str, password: str) -> None:
         self.AUTH_VERSION: int = 1
         self.__DB__: list = ["Test:532eaabd9574880dbf76b9b8cc00832c20a6ec113d682299550d7a6e0f345e25"]
