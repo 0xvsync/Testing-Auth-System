@@ -24,8 +24,8 @@ class My_AuthenticationSystem:
         self.username: str = username
         self.password: str = password
 
-    #def types (self) -> dict[dict[str,str], str]:
-
+    def types (self) -> tuple[list, list] | tuple[list, list]:
+        return ([self.username, type(self.username)], [self.password, type(self.password)], [{0: hashlib.sha256(self.username.encode()).hexdigest(), 1: hashlib.sha256(self.password.encode()).hexdigest()}])
     """
         Call the hash function within the initiator variable.
          - Return a dictionary polluted with the username(self.username) hashed
@@ -68,6 +68,14 @@ if __name__ == '__main__':
     constructor: My_AuthenticationSystem.D_TYPE = My_AuthenticationSystem(user_input, password_input)
     hash_constructor: My_AuthenticationSystem.D_TYPE = constructor.hash()
     authenticate: My_AuthenticationSystem.D_TYPE = constructor.AUTHENTICATE(hash_constructor)
+
+    """
+        Types() function returning the data types of the username, password entered.
+    """
+    username: constructor.types()[0][1] = constructor.types()[0][1]
+    password: constructor.types()[1][1] = constructor.types()[1][1]
+
+    types: My_AuthenticationSystem.D_TYPE = constructor.types()
 
     #Example
     if authenticate:
