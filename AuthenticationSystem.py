@@ -71,9 +71,11 @@ if __name__ == '__main__':
 
     """
         Types() function returning the data types of the username, password entered.
+    _
+    > username: constructor.types()[0][1] = constructor.types()[0][1]
+    > password: constructor.types()[1][1] = constructor.types()[1][1]
+    -
     """
-    username: constructor.types()[0][1] = constructor.types()[0][1]
-    password: constructor.types()[1][1] = constructor.types()[1][1]
 
     types: My_AuthenticationSystem.D_TYPE = constructor.types()
 
